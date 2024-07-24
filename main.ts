@@ -1,6 +1,9 @@
-function hello(name:string){
-  return "Hello, " + name;
-}
+class Game {
+  private canvas: HTMLCanvasElement;
+  private ctx: CanvasRenderingContext2D;
 
-let text = "World";
-document.body.textContent = hello(text);
+  constructor() {
+    this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
+    this.ctx = this.canvas.getContext('2d');
+  }
+}
