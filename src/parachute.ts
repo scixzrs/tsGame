@@ -1,23 +1,41 @@
-import { GameObject } from "./gameObject";
-import { Position, Vector } from "./vector";
+import { Sprite } from "./renderer.js";
+import { Player } from "./player.js";
 
-export class Parachute extends GameObject{
+export class Parachute extends Sprite {
+  private speed: number;
+  private saved: boolean;
+  private missed: boolean;
 
-  constructor(startPos:Position){
-    super(startPos,1);
+  constructor(startPos: number){
+    super(startPos);
+    this.speed = 7;
+    this.setImage('../images/parachutist.png');
+    this.saved = false;
+    this.missed = false;
   }
 
-  update(deltaTime: number):void {
-    this.position.y -= 50;
+  update():void {
+    this.y += this.speed;
   }
 
-  isSaved(player:Player):boolean{
-   console.log("saved");
-
+  setSaved(): void{
+    this.saved = true;
+  }
+  isSaved():boolean{
+    return this.saved;
   } 
-  
+ 
+  setMissed():void{
+    if (this.y > window.innerHeight - 100){
+      this.missed = true;
+    }
+  }
+
   isMissed():boolean{
-   console.log("dead");
-   return this.position.y > window.innerHeight;
+    return this.missed;
+  }
+
+  hasLanded(): boolean{
+    return this.isSaved() || this.isMissed(); 
   }
 }

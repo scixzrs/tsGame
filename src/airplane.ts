@@ -1,20 +1,26 @@
-import { Position, Vector } from "./vector";
-import { GameObject } from "./gameObject";
+import { Sprite } from "./renderer.js";
+import { Parachute } from "./parachute.js";
 
-export class Airplane extends GameObject {
+export class Airplane extends Sprite {
   constructor() {
-    super(new Position(50,50),1);
+    super();
+    
+    this.setImage('../images/plane.png');
   }
 
-  update(deltaTime:number) : void {
-    this.position.x -= 10;
-    if(this.position.x < 0) {
-      this.position.x = window.innerWidth;
-    }
+  update() : void {
+    this.x-=4;
+      if (this.x < 0) {
+        this.x = window.innerWidth;
+    } 
   }
 
+  bDeployReady(): boolean {
+    return Math.random() < 0.011;
+  }
+    
   deployParachute(): Parachute {
-    return new Parachute(new Position(this.position.x, this.position.y));
-  }
+      return new Parachute(this.x);
+  }  
 }
 

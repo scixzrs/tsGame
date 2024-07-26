@@ -1,20 +1,24 @@
+<!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Save the parachute</title>
-    <style>
-        canvas {
-            border: 1px solid black;
-        }
+    <style type="text/css">
+      #canvas {
+        border: 1px solid black;
+      };
+      body {
+        margin:0px;
+        overflow-y: hidden;
+      }
     </style>
-    <script type="module" src="../build/main.js"></script>
 </head>
-<body class="vsc-initialized">
-    <canvas id="canvas" width="640" height="480"></canvas>
-    <img src="../images/background.png" id='bg' style='display:none'>
-    <img src="../images/sea.png" id='water' style='display:none'>
-    <img src="../images/plane.png" id='planeSprite' style='display:none'>
-    <img src="../images/parachutist.png" id='parachuteSprite' style='display:none'>
+<body>
+    <canvas id="canvas" ></canvas>
+    <!--<img src="../images/background.png" id='bg' style='display:none'>-->
+    <!--<img src="../images/sea.png" id='water' style='display:none'>-->
+    <!--<img src="../images/plane.png" id='planeSprite' style='display:none'>-->
+    <!--<img src="../images/parachutist.png" id='parachuteSprite' style='display:none'>-->
 
-
+    <script type="module" src="main.js"></script>
 </body></html>
